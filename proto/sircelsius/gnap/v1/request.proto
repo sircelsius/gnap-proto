@@ -77,4 +77,5 @@ message RequestInteractHints {
 message RequestInteract {
     repeated string start = 1;
     RequestInteractFinish finish = 2;
+    RequestInteractHints hints = 3;
 }
