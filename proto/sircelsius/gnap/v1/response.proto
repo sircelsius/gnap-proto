@@ -52,3 +52,9 @@ message ResponseSubject {
     google.protobuf.Any assertions = 2;
     string updated_at = 3;
 }
+
+// ERROR RESPONSE
+
+message ResponseError {
+    string error = 1;
+}
