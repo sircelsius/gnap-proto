@@ -51,3 +51,30 @@ message RequestClient {
 message RequestInstance {
     string client = 1;
 }
+
+message RequestUser {
+    // TBD
+    google.protobuf.Any sub_ids = 1;
+    // TBD
+    google.protobuf.Any assertions = 2;
+}
+
+message RequestUserReference {
+    string user = 1;
+}
+
+message RequestInteractFinish {
+    string method = 1;
+    string uri = 2;
+    string nonce = 3;
+    string hash_method = 4;
+}
+
+message RequestInteractHints {
+    repeated string ui_locales = 1;
+}
+
+message RequestInteract {
+    repeated string start = 1;
+    RequestInteractFinish finish = 2;
+}
