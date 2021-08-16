@@ -1,0 +1,22 @@
+syntax = "proto3";
+package sircelsius.gnap.v1;
+
+option go_package = "sircelsius/gnap/v1";
+import "google/protobuf/any.proto";
+
+message ResourceAccessRight {
+    string type = 1;
+    repeated string actions = 2;
+    repeated string locations = 3;
+    repeated string datatypes = 4;
+    string identifier = 5;
+    repeated string privileges = 6;
+}
+
+message KeyFormat {
+    string proof = 1;
+    // JWKs are complex objects that live outside of GNAP, for now we will use Any
+    google.protobuf.Any jwk = 2;
+    string cert = 3;
+    string certs256 = 4;
+}

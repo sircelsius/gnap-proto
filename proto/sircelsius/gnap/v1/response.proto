@@ -1,0 +1,54 @@
+syntax = "proto3";
+package sircelsius.gnap.v1;
+
+option go_package = "sircelsius/gnap/v1";
+
+import "sircelsius/gnap/v1/shared.proto";
+import "google/protobuf/any.proto";
+
+message ResponseTokenSingle {
+    string value = 1;
+    string label = 2;
+    string manage = 3;
+    repeated ResourceAccessRight access = 4;
+    int32 expires_in = 5;
+    // TODO use keyformat
+    KeyFormat key = 6;
+    repeated string flags = 7;
+}
+
+message ResponseContinue {
+    string uri = 1;
+    int32 wait = 2;
+    repeated ResponseTokenSingle access_token = 3;
+}
+
+// RESPONSE INTERACT
+
+message ResponseInteractFinish {
+    string finish = 1;
+}
+
+message ResponseInteractRedirect {
+    string redirect = 1;
+}
+
+message ResponseInteractApp {
+    string app = 1;
+}
+
+message ResponseInteractUserCode {
+    message UserCode {
+        string code = 1;
+        string url = 2;
+    }
+    UserCode user_code = 1;
+}
+
+// RESPONSE SUBJECT
+
+message ResponseSubject {
+    repeated google.protobuf.Any sub_ids = 1;
+    google.protobuf.Any assertions = 2;
+    string updated_at = 3;
+}
